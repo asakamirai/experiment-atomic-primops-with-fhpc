@@ -1,0 +1,32 @@
+name:                experiment-atomic-primops-with-fhpc
+version:             0.1.0.0
+license:             BSD3
+license-file:        LICENSE
+author:              asakamirai
+maintainer:          asakamirai
+copyright:           2015 Asakamirai
+category:            Experiment
+build-type:          Simple
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Experiment.AtomicOps
+  build-depends:       base >= 4.7 && < 5
+                     , primitive >= 0.6
+                     , atomic-primops >= 0.8
+  ghc-options:         -Wall -O2 -fhpc
+  default-language:    Haskell2010
+
+test-suite experiment-atomic-primops-with-fhpc-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base
+                     , experiment-atomic-primops-with-fhpc
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/asakamirai/experiment-atomic-primops-with-fhpc.git
